@@ -1,0 +1,27 @@
+apply plugin: "com.android.library"
+apply plugin: "kotlin-android"
+
+android {
+    compileSdkVersion ver.compileSdkVersion
+    buildToolsVersion ver.buildToolsVersion
+
+    defaultConfig {
+        minSdkVersion 17
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+        }
+    }
+    sourceSets.each { set ->
+        set.java.srcDirs += "src/${set.name}/kotlin"
+    }
+}
+
+dependencies {
+    testCompile dep.junit
+}

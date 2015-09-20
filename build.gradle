@@ -1,0 +1,36 @@
+buildscript {
+    ext {
+        ver = [
+            androidSupport: "23.0.+",
+            compileSdkVersion: 23,
+            buildToolsVersion: "23.0.1",
+            kotlin: "0.13.+",
+        ]
+        plug = [
+            android: "com.android.tools.build:gradle:1.4.0-beta2",
+            kotlin: "org.jetbrains.kotlin:kotlin-gradle-plugin:${ver.kotlin}",
+        ]
+        dep = [
+            appcompat: "com.android.support:appcompat-v7:${ver.androidSupport}",
+            junit: "junit:junit:4.12",
+            kotlinStdlib: "org.jetbrains.kotlin:kotlin-stdlib:${ver.kotlin}",
+        ]
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath plug.android
+        classpath plug.kotlin
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
